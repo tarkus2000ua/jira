@@ -1,0 +1,25 @@
+fa-icon {
+    padding-right: 5px;
+}
+
+.title, .summary {
+    margin-bottom: 10px;
+}
+
+.title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+}

@@ -1,0 +1,132 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="20px">
+  <div class="buttons"
+       fxLayout
+       fxLayoutGap="5px">
+    <button mat-flat-button
+            color="primary"
+            (click)="openDialog()">Edit</button>
+    <button *ngIf="issue.status == 'To Do'"
+            mat-stroked-button
+            (click)="changeStatus('In Progress')">Start Progress</button>
+    <button *ngIf="issue.status != 'Done'"
+            mat-stroked-button
+            (click)="changeStatus('Done')">Done</button>
+    <button *ngIf="issue.status != 'To Do'"
+            mat-stroked-button
+            (click)="changeStatus('To Do')">Reopen</button>
+  </div>
+  <h2>{{issue.name}}</h2>
+  <div>{{issue.summary}}</div>
+  <div fxLayout
+       fxLayoutGap="20px">
+    <div fxFlex="67%">
+      <mat-accordion multi>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Details
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout
+               fxLayoutGap="50px"
+               class="info">
+            <div fxLayout="column"
+                 fxFlex="50%"
+                 fxLayoutGap="10px">
+              <div fxLayout
+                   fxLayoutAlign="space-between">
+                <div class="label">Type:</div>
+                <div>{{issue.type}}</div>
+              </div>
+              <div fxLayout
+                   fxLayoutAlign="space-between">
+                <div class="label">Priority:</div>
+                <div>{{issue.priority}}</div>
+              </div>
+            </div>
+            <div fxLayout="column"
+                 fxFlex="50%"
+                 fxLayoutGap="10px">
+              <div fxLayout
+                   fxLayoutAlign="space-between">
+                <div class="label">Status:</div>
+                <div
+                     [ngClass]="{'todo': issue.status === 'To Do', 'progress': issue.status === 'In Progress', 'done': issue.status === 'Done'}">
+                  {{issue.status}}</div>
+              </div>
+              <div fxLayout
+                   fxLayoutAlign="space-between">
+                <div class="label">Labels:</div>
+                <div>
+                  <span class="label-item"
+                        *ngFor="let label of issue.labels">{{label}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Description
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div [innerHTML]="issue.description"></div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div fxFlex="33%">
+      <mat-accordion multi>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              People
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout="column"
+               fxLayoutGap="10px"
+               class="info">
+            <div fxLayout
+                 fxLayoutAlign="space-between">
+              <div class="label">Assignee:</div>
+              <div>{{issue.assignee}}</div>
+            </div>
+            <div fxLayout
+                 fxLayoutAlign="space-between">
+              <div class="label">Reporter:</div>
+              <div>{{issue.reporter}}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Dates
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div fxLayout="column"
+               fxLayoutGap="10px"
+               class="info">
+            <div fxLayout
+                 fxLayoutAlign="space-between">
+              <div class="label">Created:</div>
+              <div>{{issue.createdAt | date:'dd.MM.yy HH:mm'}}</div>
+            </div>
+            <div fxLayout
+                 fxLayoutAlign="space-between">
+              <div class="label">Updated:</div>
+              <div>{{issue.updatedAt | date:'dd.MM.yy HH:mm'}}</div>
+            </div>
+            <div fxLayout
+                 fxLayoutAlign="space-between">
+              <div class="label">Due:</div>
+              <div>{{issue.dueDate | date:'dd.MM.yy'}}</div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

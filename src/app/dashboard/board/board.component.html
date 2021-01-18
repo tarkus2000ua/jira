@@ -1,0 +1,37 @@
+<div class="root">
+  <app-filter-bar></app-filter-bar>
+  <div class="board">
+    <div class="board-wrapper">
+      <div class="board-columns">
+
+        <div cdkDropList
+             cdkDropListOrientation="horizontal"
+             class="board-columns"
+             (cdkDropListDropped)="dropGrid($event)">
+          <div cdkDragLockAxis="x"
+               class="board-column"
+               *ngFor="let column of board.columns"
+               cdkDrag>
+            <div class="column-title"
+                 cdkDragHandle>
+              {{ column.name }}
+            </div>
+            <div class="tasks-container"
+                 id="{{column.id}}"
+                 [cdkDropListConnectedTo]="['todo', 'progress', 'done']"
+                 cdkDropList
+                 [cdkDropListData]="column.issues"
+                 (cdkDropListDropped)="drop($event)">
+              <app-board-item class="task"
+                              *ngFor="let issue of column.issues"
+                              [issue]="issue"
+                              cdkDrag>
+              </app-board-item>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

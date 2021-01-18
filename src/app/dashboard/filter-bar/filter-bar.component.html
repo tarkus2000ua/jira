@@ -1,0 +1,21 @@
+<div class="wrapper"
+     fxLayout
+     fxLayoutGap="20px"
+     fxLayoutAlign="space-between center"
+     fxFlex="800px">
+  <button mat-stroked-button
+          fxFlex="100px"
+          color="primary"
+          (click)=showMyIssues()>My Issues</button>
+  <mat-form-field fxFlex>
+    <input matInput
+           placeholder="Filter issues"
+           (input)="onChange($event)"
+           (change)="onChange($event)"
+           [(ngModel)]="filterString">
+  </mat-form-field>
+  <button mat-flat-button
+          fxFlex="120px"
+          color="primary"
+          (click)="resetFilter()">Reset filter</button>
+</div>

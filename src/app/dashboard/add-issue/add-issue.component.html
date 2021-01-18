@@ -1,0 +1,95 @@
+<h1 *ngIf="isAddMode"
+    mat-dialog-title>Create issue</h1>
+<h1 *ngIf="!isAddMode"
+    mat-dialog-title>Edit issue {{name}}</h1>
+<div mat-dialog-content>
+  <form fxLayout="column"
+        #f="ngForm"
+        (ngSubmit)="onSubmit(f)">
+    <div fxLayout
+         fxLayoutGap="20px">
+      <mat-form-field fxFlex="50%">
+        <mat-label>Issue type</mat-label>
+        <mat-select name="issueType"
+                    required
+                    [(ngModel)]="type">
+          <mat-option *ngFor="let issueType of issueTypes"
+                      [value]="issueType.type">
+            <fa-icon [icon]="issueType.icon"></fa-icon><span>{{issueType.type}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <mat-label>Assignee</mat-label>
+        <mat-select name="assignee"
+                    required
+                    [(ngModel)]="assignee">
+          <mat-option *ngFor="let user of auth.users"
+                      [value]="user.displayName">{{user.displayName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout
+         fxLayoutGap="20px">
+      <mat-form-field fxFlex="50%">
+        <mat-label>Priority</mat-label>
+        <mat-select name="priority"
+                    required
+                    [(ngModel)]="priority">
+          <mat-option *ngFor="let priority of priorityTypes"
+                      [value]="priority.type">
+            <fa-icon [icon]="priority.icon"></fa-icon><span>{{priority.type}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <mat-label>Due Date</mat-label>
+        <input matInput
+               [matDatepicker]="picker"
+               [min]="minDate"
+               name="dueDate"
+               required
+               [(ngModel)]="dueDate">
+        <mat-datepicker-toggle matSuffix
+                               [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Summary</mat-label>
+      <input matInput
+             type="text"
+             name="summary"
+             required
+             [(ngModel)]="summary">
+    </mat-form-field>
+    <div class="description">
+      <mat-label>Description</mat-label>
+      <textarea [froalaEditor]
+                name="description"
+                [(ngModel)]="description">{{description}}</textarea>
+    </div>
+    <div class="labels">
+      <ng-select [(ngModel)]="labels"
+                 name="labels"
+                 [multiple]="true"
+                 placeholder="Labels"
+                 dropdownPosition="top">
+        <ng-option *ngFor="let label of labelsArr"
+                   [value]="label">{{label}}</ng-option>
+      </ng-select>
+
+    </div>
+    <div mat-dialog-actions>
+      <button mat-stroked-button
+              type="reset"
+              (click)="onNoClick()">Cancel</button>
+      <button mat-flat-button
+              color="primary"
+              type="submit"
+              cdkFocusInitial
+              [disabled]="f.invalid">Save</button>
+    </div>
+  </form>
+</div>

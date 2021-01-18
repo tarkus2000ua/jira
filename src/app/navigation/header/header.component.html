@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs><button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button></div>
+  <div><a routerLink="/system/board">Jira</a></div>
+  <div fxFlex
+       fxLayout
+       fxLayoutAlign="flex-end"
+       fxHide.xs>
+    <ul fxLayout
+        fxLayoutGap="10px"
+        class="navigation-items">
+      <li><button mat-flat-button
+                (click)="openDialog()">Create</button></li>
+      <li *ngIf="user ? user : auth.user | async as user">
+        <button mat-flat-button
+                color="primary"
+                fxLayout
+                fxLayoutAlign="center center"
+                fxLayoutGap="10px"
+                [matMenuTriggerFor]="menu">{{ user.displayName }}<img class="avatar"
+               [src]="user.photoURL"></button>
+        <mat-menu #menu="matMenu"
+                  yPosition="below">
+          <button mat-menu-item
+                  (click)="logout()">
+            <mat-icon>logout</mat-icon><span>Logout</span>
+          </button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

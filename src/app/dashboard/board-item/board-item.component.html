@@ -1,0 +1,21 @@
+<div fxLayout="column"
+     fxLayoutAlign="center stretch"
+     class="container">
+  <div class="title"
+       (click)="onViewItem(issue)"><strong>{{issue.name}}</strong></div>
+  <div class="summary">{{issue.summary}}</div>
+  <div fxLayout
+       fxLayoutAlign="space-between"
+       fxFlex="100%">
+    <div>
+      <fa-icon [icon]="issueIcon"
+               [classes]="['bug']"></fa-icon>
+      <fa-icon [icon]="priorityIcon"></fa-icon>
+    </div>
+    <img class="avatar"
+         [matTooltip]="issue.assignee"
+         matTooltipClass="tooltip"
+         alt="avatar"
+         src='{{"https://eu.ui-avatars.com/api/?background=random&name="+issue.assignee}}'>
+  </div>
+</div>

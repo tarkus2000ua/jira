@@ -1,0 +1,40 @@
+.screen {
+  height: 100vh;
+  background: linear-gradient(rgb(33, 33, 214),rgb(117, 11, 117));
+}
+
+.container {
+  position: relative;
+  top: 80px;
+  width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+mat-form-field, button, hr {
+    width: 400px;
+  }
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.info {
+  font-size: 0.8rem;
+}
+
+.info span {
+  font-weight: bold;
+}
+
+.facebook, .google {
+  margin-top: 30px;
+}

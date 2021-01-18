@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jira-a52e8": {
+      "hosting": {
+        "jira": [
+          "jira-a52e8"
+        ]
+      }
+    }
+  }
+}

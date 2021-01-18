@@ -1,0 +1,52 @@
+<div class="screen">
+  <section fxLayout="column"
+           fxLayoutAlign="center center"
+           class="container">
+    <div class="title">Login</div>
+    <form fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px"
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input type="email"
+               matInput
+               placeholder="Your email"
+               formControlName="email">
+        <mat-hint>Please enter a valid email.</mat-hint>
+        <mat-error>Invalid or missing email.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password"
+               matInput
+               placeholder="Your password"
+               formControlName="password">
+        <mat-hint>Please enter your password.</mat-hint>
+        <mat-error>Missing password.</mat-error>
+      </mat-form-field>
+      <button type="submit"
+              mat-flat-button
+              color="primary"
+              [disabled]="loginForm.invalid">Submit</button>
+      <div class="info"><span>test user: </span> test@demo.com | 098765</div>
+    </form>
+    <hr>
+    <div fxLayout="column"
+         fxLayoutAlign="center center"
+         fxLayoutGap="10px">
+      <button mat-flat-button
+              color="primary"
+              (click)="loginWithFacebook()"
+              class="facebook">
+        <mat-icon class="icon">facebook</mat-icon>Login with Facebook
+      </button>
+      <div class="info"><span>fb test: </span> kpvwnmcqau_1609775964@tfbnw.net | z3Avtg3yMGfsgs3</div>
+      <button mat-stroked-button
+              (click)="loginWithGoogle()"
+              class="google">
+        <mat-icon class="icon"
+                  svgIcon="google"></mat-icon>Login with Google
+      </button>
+    </div>
+  </section>
+</div>

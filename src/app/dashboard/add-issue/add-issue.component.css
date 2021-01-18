@@ -1,0 +1,18 @@
+.description mat-label {
+    color: rgba(0, 0, 0, 0.57);
+    display: block;
+    margin-bottom: 5px;
+}
+
+mat-option span {
+    padding-left: 5px;
+    /* display: inline-block; */
+}
+
+div[mat-dialog-content] {
+    height: 580px;
+}
+
+.labels {
+    margin-top: 5px;
+}

@@ -1,0 +1,48 @@
+.container {
+    padding: 20px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+mat-expansion-panel-header {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid lightgray;
+    color: #4e73df;
+    font-weight: bold;
+}
+
+.info {
+    padding: 10px;
+}
+
+.label-item {
+    color: white;
+    background-color: orange;
+    padding: 3px;
+    display: inline-block;
+    margin-left: 5px;
+    border-radius: 3px;
+}
+
+.todo,
+.progress,
+.done {
+    color: white;
+    padding: 3px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.todo {
+    background-color: darkblue;
+}
+
+.progress {
+    background-color: orange;
+}
+
+.done {
+    background-color: limegreen;
+}
