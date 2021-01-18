@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { IssueService } from './../issue.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -9,13 +9,14 @@ import IssueTypes from '../board/IssueTypes';
 import PriorityTypes from '../board/PriorityTypes';
 import { Inject } from '@angular/core';
 import { Issue } from '../board/issue.model';
+import { Editor, Toolbar } from 'ngx-editor';
 
 @Component({
     selector: 'app-add-issue',
     templateUrl: './add-issue.component.html',
     styleUrls: ['./add-issue.component.css']
 })
-export class AddIssueComponent implements OnInit {
+export class AddIssueComponent implements OnInit, OnDestroy {
     labelsArr = ['FE', 'BE', 'Bug'];
     minDate: Date;
     priorityTypes: any;
@@ -31,6 +32,16 @@ export class AddIssueComponent implements OnInit {
     labels = [];
     id = '';
 
+    editor: Editor;
+    toolbar: Toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['code', 'blockquote'],
+        ['ordered_list', 'bullet_list'],
+        ['link', 'image'],
+        ['text_color', 'background_color'],
+    ];
+
     constructor(
         public dialogRef: MatDialogRef<AddIssueComponent>,
         public auth: AuthService,
@@ -40,6 +51,7 @@ export class AddIssueComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.editor = new Editor();
         this.minDate = new Date();
         this.priorityTypes = PriorityTypes;
         this.issueTypes = IssueTypes;
@@ -56,6 +68,10 @@ export class AddIssueComponent implements OnInit {
             this.dueDate = this.data.issue.dueDate;
             this.labels = this.data.issue.labels;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.editor.destroy();
     }
 
     onNoClick(): void {

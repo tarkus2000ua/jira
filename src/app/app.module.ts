@@ -19,12 +19,12 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavComponent } from './navigation/sidenav/sidenav.component';
 import { BoardComponent } from './dashboard/board/board.component';
 import { AddIssueComponent } from './dashboard/add-issue/add-issue.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { BoardItemComponent } from './dashboard/board-item/board-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { IssueComponent } from './dashboard/issue/issue.component';
 import { FilterBarComponent } from './dashboard/filter-bar/filter-bar.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -51,9 +51,9 @@ import { FilterBarComponent } from './dashboard/filter-bar/filter-bar.component'
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot(), FontAwesomeModule,
-    NgSelectModule
+    FontAwesomeModule,
+    NgSelectModule,
+    NgxEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

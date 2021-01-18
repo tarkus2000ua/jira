@@ -27,9 +27,9 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@ng-select/ng-select": "^5.0.15",
-    "angular-froala-wysiwyg": "^3.2.5-1",
     "express": "^4.17.1",
     "firebase": "^7.0 || ^8.0",
+    "ngx-editor": "^7.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
